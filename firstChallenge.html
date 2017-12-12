@@ -1,0 +1,44 @@
+<html>
+<!-- phone bying calculator with tax -->
+<title>calculator</title>
+<head>calculator</head>
+<body>
+	<div>tax amount:</div>
+	<div>accessory amount:</div>
+	<div>full amount:</div>
+</body>
+
+<script>
+const TAX_RATE = +(prompt("enter your tax rate"));
+const PHONE_PRICE = +(prompt("enter your phone price"));
+const ACCESORY_PRICE = +(prompt("enter your accessory price"));
+const SPENDING_TRESHOLD = +(prompt("enter your spending treshold for phone and accessories together"));
+var accountBallance = +(prompt("enter your current bank balance"));
+var amount = 0;
+var taxable;
+var taxAmount = 0;
+function taxCount(){
+	return taxable *TAX_RATE;
+}
+function dataFormat(val){
+	console.log( "$" + val.toFixed(2));
+}
+while (amount+PHONE_PRICE < accountBallance) {
+	amount += PHONE_PRICE;
+	if (amount+ACCESORY_PRICE <SPENDING_TRESHOLD){
+		amount +=ACCESORY_PRICE;
+	} else console.log("you've just override your spending treshold!");
+}
+taxable = amount;
+amount += taxCount(amount);
+taxAmount = taxCount();
+console.log("whole amount = ") + dataFormat(amount);
+console.log("tax amount = ") + dataFormat(taxAmount);
+if (amount > accountBallance){
+	console.log("you can't afford this purchase :((")
+}
+
+</script>
+
+
+</html>

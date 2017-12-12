@@ -1,0 +1,24 @@
+<html>
+<title></title>
+<head>
+	
+</head>
+<body>	
+	<header>hosting functions vs vars</header>
+
+</body>
+<script>
+	foo();
+	var a = true;
+	if (a){
+		function foo(){
+			console.log('a');
+		}
+	}else {
+		function foo() {
+			console.log("b");
+		}
+	}
+	foo();
+</script>
+</html>

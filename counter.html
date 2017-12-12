@@ -1,0 +1,116 @@
+<html>
+<title></title>
+<head>счетчик из собеседования в Google</head>
+<body>
+	<div id="myArray"></div>
+	
+</body>
+<script>
+
+	var myArr = [9,9,9,4];
+	var newArr =[];
+	var elem = document.getElementById("myArray");
+	elem.innerHTML = myArr;
+	function counter(){		
+		// var wholeNumb = myArr.join("");//1324 as a string
+		// var conversed = parseInt(wholeNumb);//as a number	
+		var max = 10;
+		var min = 1;
+		var end =10;
+		// var i = myArr[3],
+		// 	j = myArr[2],
+		// 	k = myArr[1],
+		// 	l = myArr[0];
+			for (var i = myArr[3]; i <= max; i++) {
+				var temp = i;
+				newArr.push(temp);
+				var string1 = newArr.join('');
+				newArr = string1.split('');
+				if(newArr.length > 1){
+					temp = parseInt(newArr[1]);
+					myArr.splice(3, 1, temp);
+
+				} else {
+					newArr = [];
+					myArr.splice(3, 1, i);
+				}
+				
+				elem.innerHTML = myArr;
+				if (i == max && myArr[0]!== max){
+					//var tempo = parseInt(newArr[0]);
+					// myArr.splice(3, 1, min);
+					newArr = [];
+					myArr[2]++ /*+tempo*/;
+					var tempi = myArr[2];
+					newArr.push(tempi);
+					var string2 = newArr.join('');
+					newArr = string2.split('');
+					if(newArr.length >1){
+						tempi = parseInt(newArr[1]);
+						myArr.splice(2,1,tempi);
+
+					} else{
+						newArr = [];
+						myArr.splice(2,1,tempi);
+						i = 0;
+					}
+					elem.innerHTML = myArr;
+					if(i == max && myArr[0]!== max){
+						newArr = [];
+						myArr[1]++;
+						var tempo = myArr[1];
+						newArr.push(tempo);
+						var string3 = newArr.join('');
+						newArr =string3.split('');
+						if (newArr.length > 1){
+							tempo = parseInt(newArr[1]);
+							myArr.splice(1,1, tempo);
+						} else {
+							newArr =[];
+							myArr.splice(1,1, tempo);
+							i = 0;
+						}
+						myArr[2] = 0;
+						elem.innerHTML = myArr;
+						if (i == max && myArr[0]!== max){
+							newArr = [];
+							myArr[0]++;
+							var tempa = myArr[0];
+							newArr.push(tempa);
+							var string4 = newArr.join('');
+							newArr = string4.split('');
+							if(newArr.length >1){
+								tempa = parseInt(newArr[1]);
+								myArr.splice(0,1, tempa);
+							} else {
+								newArr = [];
+								myArr.splice(0,1, tempa);
+								i = 0;
+							}
+							
+							myArr[1] = 0;
+							myArr.unshift(1);
+							elem.innerHTML = myArr;
+							//здесь нужен switch, который проверит все условия и сделает break
+							
+						}
+						// else if (myArr[0] == max && myArr[1]==max){
+						// 		break;
+						// 	}
+					}
+					// else if (myArr[0] == max && myArr[1]==max){
+					// 			break;
+					// 		}
+				}
+				else if (myArr[0] == max /*&& myArr[1]==max*/){
+
+					break;
+				}
+			};
+//setInterval сделать отдельной функцией - замыканием с аргументом (см. стр 42 тетради)
+		// var timerId = setInterval(function(){
+
+	}
+	counter();
+</script>
+</html>
